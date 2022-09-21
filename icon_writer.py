@@ -2,7 +2,7 @@ from PIL import Image, ImageFont, ImageDraw
 
 
 def get_text_size(text, image, font):
-    im = Image.new('RGB', (image.width, image.height))
+    im = Image.new("RGB", (image.width, image.height))
     draw = ImageDraw.Draw(im)
     return draw.textsize(text, font)
 
@@ -15,9 +15,9 @@ def find_font_size(text, font_family, image, target_width_ratio):
     return round(estimated_font_size)
 
 
-def write_icon(text, size=40, bgcolor='white', fontcolor='black'):
+def write_icon(text, size=40, bgcolor="white", fontcolor="black"):
     """Add text over an image"""
-    image = Image.new('RGB', (80, 80), color=bgcolor)
+    image = Image.new("RGB", (80, 80), color=bgcolor)
 
     draw = ImageDraw.Draw(image)
     font_size = 2
@@ -26,5 +26,5 @@ def write_icon(text, size=40, bgcolor='white', fontcolor='black'):
     font_size = find_font_size(text, font_family, image, width_ratio)
     font = ImageFont.truetype(font_family, font_size)
     draw.text((size, size), text, font=font, fill=fontcolor, anchor="mm", align="center")
-    image.save('icon.png')
+    image.save("icon.png")
     return image
