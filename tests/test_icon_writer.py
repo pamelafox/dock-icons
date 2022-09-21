@@ -1,6 +1,6 @@
 from PIL import Image, ImageFont
 
-from icon_writer import get_text_size, find_font_size, write_icon
+from src.icon_writer_package.icon_writer import get_text_size, find_font_size, write_icon
 
 
 def test_get_text_size():
