@@ -4,7 +4,7 @@ from PIL import Image, ImageFont, ImageDraw
 def get_text_size(text, image, font):
     im = Image.new("RGB", (image.width, image.height))
     draw = ImageDraw.Draw(im)
-    return draw.textsize(text, font)
+    return draw.textbbox((0, 0), text, font)[2:]
 
 
 def find_font_size(text, font_family, image, target_width_ratio):
@@ -21,10 +21,9 @@ def write_icon(text, size=40, bgcolor="white", fontcolor="black"):
 
     draw = ImageDraw.Draw(image)
     font_size = 2
-    font_family = "OpenSans-Bold.ttf"
+    font_family = "assets/OpenSans-Bold.ttf"
     width_ratio = 0.9
     font_size = find_font_size(text, font_family, image, width_ratio)
     font = ImageFont.truetype(font_family, font_size)
     draw.text((size, size), text, font=font, fill=fontcolor, anchor="mm", align="center")
-    image.save("icon.png")
     return image
